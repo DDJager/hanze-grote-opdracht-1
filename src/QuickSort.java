@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class QuickSort implements Sortable {
@@ -7,8 +8,9 @@ public class QuickSort implements Sortable {
      *
      * @param dataSet The dataset
      */
-    public void sort(List dataSet) {
+    public ArrayList<Integer> sort(List<Integer> dataSet) {
         System.out.println("Quick sorting!");
+        return new ArrayList<Integer>();
     }
 
     /**

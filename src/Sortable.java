@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,7 +13,7 @@ public interface Sortable {
      *
      * @param dataSet The dataset
      */
-    public void sort(List dataSet);
+    public ArrayList<Integer> sort(List<Integer> dataSet);
 
     /**
      * An alternative method, if you want to use standard arrays instead of Lists

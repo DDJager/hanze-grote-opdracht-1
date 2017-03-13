@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -39,7 +40,26 @@ public class SortingWrapper {
      * @param key the key
      * @param dataSet the dataset
      */
-    public void performSort(String key, List dataSet) {
+    public ArrayList<Integer> performSort(String key, List dataSet) {
+        try {
+            Sortable sortableObject = sortingAlgorithms.get(key);
+            sortableObject.sort(dataSet);
+        } catch (NullPointerException e) {
+            System.out.println("Deze sorteer algorithme bestaat niet!");
+        } finally {
+            // Finally cast it to an ArrayList<Integer> and the dataSet
+            return (ArrayList<Integer>) dataSet;
+        }
+    }
+
+    /**
+     * Alternative method for using standard arrays as input
+     * Perform a sorting algorithm on a dataset using the algorithm of the given key. If it exists
+     *
+     * @param key
+     * @param dataSet
+     */
+    public void performSort(String key, int[] dataSet) {
         try {
             Sortable sortableObject = sortingAlgorithms.get(key);
             sortableObject.sort(dataSet);

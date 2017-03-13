@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class MergeSort implements Sortable {
@@ -7,8 +8,9 @@ public class MergeSort implements Sortable {
      *
      * @param dataSet The dataset
      */
-    public void sort(List dataSet) {
+    public ArrayList<Integer> sort(List<Integer> dataSet) {
         System.out.println("Merge sorting!");
+        return new ArrayList<Integer>();
     }
 
     /**
