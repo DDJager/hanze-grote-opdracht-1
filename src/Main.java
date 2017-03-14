@@ -1,7 +1,16 @@
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.event.EventType;
+import javafx.geometry.HPos;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -37,19 +46,33 @@ public class Main extends Application {
         // Perform the sorting algorithm
         //sw.performSort("insertionsort", list, false);
 
-        // Create a FlowPane
-        Pane pane = new FlowPane();
+        // Create a root pane (VBox) and two sub-panes (GridPane and FlowPane)
+        VBox pane = new VBox();
+        pane.setAlignment(Pos.CENTER);
 
-        // For every value in the array, create a new line
-        for (int i = 0; i < list.length; i++) {
-            Line line = new Line(10, 30, 10, 10);
-            line.setStrokeWidth(10);
-            pane.getChildren().add(line);
-            pane.getChildren().add(new Text(String.valueOf(list[i])));
-        }
+        GridPane gridPane = new GridPane();
+        gridPane.setAlignment(Pos.CENTER);
+        gridPane.setHgap(20); // Set a horizontal gap between the nodes
+        gridPane.setAlignment(Pos.BOTTOM_CENTER);
+        FlowPane flowPane = new FlowPane();
+        flowPane.setAlignment(Pos.CENTER);
+        flowPane.setPadding(new Insets(20, 0, 0, 0));
 
+        // Paint the GUI
+        paintGUI(list, gridPane);
+
+        // Add a button
+        Button button = new Button("Sort step");
+        button.setOnAction(e -> {
+            // Clear the current GUI and perform the sorting, then repaint the GUI.
+            gridPane.getChildren().clear();
+            sw.performSort("insertionsort", list, true);
+            paintGUI(list, gridPane);
+        });
+        flowPane.getChildren().add(button);
 
         // Add the pane to the scene and set the primaryStage
+        pane.getChildren().addAll(gridPane, flowPane);
         Scene scene = new Scene(pane);
         primaryStage.setTitle("Test");
         primaryStage.setScene(scene);
@@ -92,8 +115,21 @@ public class Main extends Application {
         return list;
     }
 
-    public static void paintGUI() {
-        // @todo
+    /**
+     * This method paints the GUI. It adds new lines to the GridPane based on the
+     * length of the array.
+     *
+     * @param list
+     * @param gridPane
+     */
+    public static void paintGUI(int[] list, GridPane gridPane) {
+        for (int i = 0; i < list.length; i++) {
+            int calculatedHeight = ( (list[i] * 10) == 0 ) ? 10 : (list[i] * 10);
+            Line line = new Line(10, calculatedHeight, 10, 10);
+            line.setStrokeWidth(10);
+            gridPane.add(line, i, 0);
+            gridPane.add(new Text(String.valueOf(list[i])), i, 1);
+        }
     }
 
 
