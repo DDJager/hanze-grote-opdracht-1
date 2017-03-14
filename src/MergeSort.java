@@ -22,4 +22,12 @@ public class MergeSort implements Sortable {
         System.out.println("This method is reserved when we want to use arrays in the future!");
     }
 
+    public void sortOneStep(int[] dataSet) {
+
+    }
+
+    public void reset() {
+
+    }
+
 }

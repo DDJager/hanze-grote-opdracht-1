@@ -56,13 +56,18 @@ public class SortingWrapper {
      * Alternative method for using standard arrays as input
      * Perform a sorting algorithm on a dataset using the algorithm of the given key. If it exists
      *
-     * @param key
-     * @param dataSet
+     * @param key       The name of the sorting algorithm
+     * @param dataSet   The array
+     * @param stepFlag  The flag to check if it needs to perform one step or the whole algorithm
      */
-    public void performSort(String key, int[] dataSet) {
+    public void performSort(String key, int[] dataSet, boolean stepFlag) {
         try {
             Sortable sortableObject = sortingAlgorithms.get(key);
-            sortableObject.sort(dataSet);
+            if (stepFlag) {
+                sortableObject.sortOneStep(dataSet);
+            } else  {
+                sortableObject.sort(dataSet);
+            }
         } catch (NullPointerException e) {
             System.out.println("Deze sorteer algorithme bestaat niet!");
         }

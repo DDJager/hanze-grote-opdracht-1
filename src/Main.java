@@ -14,6 +14,14 @@ public class Main extends Application {
 
     public static void main(String[] args) {
 
+        // Launch the JavaFX window
+        launch(args);
+
+    }
+
+    @Override
+    public void start(Stage primaryStage) {
+
         // Instantiate a SortingWrapper
         SortingWrapper sw = new SortingWrapper();
 
@@ -25,39 +33,19 @@ public class Main extends Application {
 
         // Generate a random array or ArrayList
         int[] list = generateArray(6, 10);
-        for (int v : list) {
-            System.out.print(v + " ");
-        }
-
-        System.out.println();
 
         // Perform the sorting algorithm
-        sw.performSort("insertionsort", list);
-        for (int v : list) {
-            System.out.print(v + " ");
-        }
-
-        // Launch the JavaFX window
-        //launch(args);
-
-    }
-
-    @Override
-    public void start(Stage primaryStage) {
-
-        // Generate a random array or ArrayList
-        ArrayList<Integer> list = generateArrayList(6, 3);
-        System.out.println(list);
+        //sw.performSort("insertionsort", list, false);
 
         // Create a FlowPane
         Pane pane = new FlowPane();
 
-        // For every value in the ArrayList, create a new line
-        for (int i = 0; i < list.size(); i++) {
-            Line line = new Line(10, 10, 10, 10);
+        // For every value in the array, create a new line
+        for (int i = 0; i < list.length; i++) {
+            Line line = new Line(10, 30, 10, 10);
             line.setStrokeWidth(10);
             pane.getChildren().add(line);
-            pane.getChildren().add(new Text(String.valueOf(list.get(i))));
+            pane.getChildren().add(new Text(String.valueOf(list[i])));
         }
 
 
@@ -102,6 +90,10 @@ public class Main extends Application {
         }
 
         return list;
+    }
+
+    public static void paintGUI() {
+        // @todo
     }
 
 
