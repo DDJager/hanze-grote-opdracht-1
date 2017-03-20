@@ -43,9 +43,6 @@ public class Main extends Application {
         // Generate a random array or ArrayList
         int[] list = generateArray(6, 10);
 
-        // Perform the sorting algorithm
-        //sw.performSort("insertionsort", list, false);
-
         // Create a root pane (VBox) and two sub-panes (GridPane and FlowPane)
         VBox pane = new VBox();
         pane.setAlignment(Pos.CENTER);
@@ -66,7 +63,12 @@ public class Main extends Application {
         button.setOnAction(e -> {
             // Clear the current GUI and perform the sorting, then repaint the GUI.
             gridPane.getChildren().clear();
-            sw.performSort("quicksort", list, false);
+
+            // @todo Unlock one of these methods to perform a sorting algorithm
+            //sw.performSort("insertionsort", list, true);
+            sw.performSort("bubblesort", list, false);
+//            sw.performSort("quicksort", list, false);
+
             paintGUI(list, gridPane);
         });
         flowPane.getChildren().add(button);

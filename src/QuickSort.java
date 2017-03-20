@@ -3,6 +3,11 @@ import java.util.List;
 
 public class QuickSort implements Sortable {
 
+    // This field is used for the sortOneStep method
+    // If the method performs one single step, it will save
+    // the current increment in this variable for the next step
+    private static int stepCounter = 1;
+
     /**
      * QuickSort with a List dataset
      *
@@ -27,7 +32,7 @@ public class QuickSort implements Sortable {
     }
 
     public void reset() {
-
+        stepCounter = 1;
     }
 
     private void quickSort(int[] list, int first, int last) {

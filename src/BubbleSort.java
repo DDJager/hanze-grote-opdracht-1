@@ -25,6 +25,7 @@ public class BubbleSort implements Sortable {
      * @param dataSet The dataset
      */
     public void sort(int[] dataSet) {
+        long start = System.currentTimeMillis();
         boolean needNextPass = true;
 
         for (int k = 1; k < dataSet.length && needNextPass; k++) {
@@ -41,6 +42,8 @@ public class BubbleSort implements Sortable {
                 }
             }
         }
+        long end = System.currentTimeMillis();
+        System.out.println(end-start);
     }
 
     public void sortOneStep(int[] dataSet) {
