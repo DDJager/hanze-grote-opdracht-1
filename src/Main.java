@@ -66,7 +66,7 @@ public class Main extends Application {
         button.setOnAction(e -> {
             // Clear the current GUI and perform the sorting, then repaint the GUI.
             gridPane.getChildren().clear();
-            sw.performSort("insertionsort", list, true);
+            sw.performSort("quicksort", list, false);
             paintGUI(list, gridPane);
         });
         flowPane.getChildren().add(button);
