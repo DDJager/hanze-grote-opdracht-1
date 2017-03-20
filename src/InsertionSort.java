@@ -15,7 +15,6 @@ public class InsertionSort implements Sortable {
      * @param dataSet The dataset
      */
     public ArrayList<Integer> sort(List<Integer> dataSet) {
-        // @todo Work In Progress
         //for (int i = 1; i < dataSet.size(); i++) {
             //int currentElement = (int) dataSet.get(i);
             //int k;

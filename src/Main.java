@@ -64,10 +64,10 @@ public class Main extends Application {
             // Clear the current GUI and perform the sorting, then repaint the GUI.
             gridPane.getChildren().clear();
 
-            // @todo Unlock one of these methods to perform a sorting algorithm
+            // Unlock one of these methods to perform a sorting algorithm
             //sw.performSort("insertionsort", list, true);
             sw.performSort("bubblesort", list, false);
-//            sw.performSort("quicksort", list, false);
+            //sw.performSort("quicksort", list, false);
 
             paintGUI(list, gridPane);
         });
