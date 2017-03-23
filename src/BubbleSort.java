@@ -25,25 +25,12 @@ public class BubbleSort implements Sortable {
      * @param dataSet The dataset
      */
     public void sort(int[] dataSet) {
-        long start = System.currentTimeMillis();
         boolean needNextPass = true;
 
         for (int k = 1; k < dataSet.length && needNextPass; k++) {
             // Array may be sorted and next pass not needed
-            needNextPass = false;
-            for (int i = 0; i < dataSet.length - k; i++) {
-                if (dataSet[i] > dataSet[i + 1]) {
-                    // Swap list[i] with list[i + 1]
-                    int temp = dataSet[i];
-                    dataSet[i] = dataSet[i + 1];
-                    dataSet[i + 1] = temp;
-
-                    needNextPass = true; // Next pass still needed
-                }
-            }
+            needNextPass = swap(dataSet, k);
         }
-        long end = System.currentTimeMillis();
-        System.out.println(end-start);
     }
 
     public void sortOneStep(int[] dataSet) {
@@ -54,17 +41,8 @@ public class BubbleSort implements Sortable {
 
         for (int k = 1; k < dataSet.length && needNextPass; k++) {
             // Array may be sorted and next pass not needed
-            needNextPass = false;
-            for (int i = 0; i < dataSet.length - k; i++) {
-                if (dataSet[i] > dataSet[i + 1]) {
-                    // Swap list[i] with list[i + 1]
-                    int temp = dataSet[i];
-                    dataSet[i] = dataSet[i + 1];
-                    dataSet[i + 1] = temp;
+            needNextPass = swap(dataSet, k);
 
-                    needNextPass = true; // Next pass still needed
-                }
-            }
             // If the contents of the dataSet has been changed (so that there is always one step performed),
             // only then increment the stepCounter +1 and stop the current step
             if (!Arrays.equals(outerTemp, dataSet)) {
@@ -74,7 +52,23 @@ public class BubbleSort implements Sortable {
         }
     }
 
-    
+    private boolean swap(int[] dataSet, int k) {
+        boolean tempNextPass = false;
+        for (int i = 0; i < dataSet.length - k; i++) {
+            if (dataSet[i] > dataSet[i + 1]) {
+                // Swap list[i] with list[i + 1]
+                int temp = dataSet[i];
+                dataSet[i] = dataSet[i + 1];
+                dataSet[i + 1] = temp;
+
+                tempNextPass = true; // Next pass still needed
+            }
+        }
+        if (tempNextPass) {
+            return true;
+        }
+        return false;
+    }
 
     public void reset() {
         stepCounter = 1;
