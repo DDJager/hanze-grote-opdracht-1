@@ -41,7 +41,7 @@ public class Main extends Application {
         sw.addNewSortingAlgorithm("mergesort", new MergeSort());
 
         // Generate a random array or ArrayList
-        int[] list = generateArray(6, 10);
+        int[] list = generateArray(60, 10);
 
         // Create a root pane (VBox) and two sub-panes (GridPane and FlowPane)
         VBox pane = new VBox();
@@ -66,7 +66,7 @@ public class Main extends Application {
 
             // Unlock one of these methods to perform a sorting algorithm
             //sw.performSort("insertionsort", list, true);
-            sw.performSort("bubblesort", list, false);
+            sw.performSort("bubblesort", list, true);
             //sw.performSort("quicksort", list, false);
 
             paintGUI(list, gridPane);

@@ -74,6 +74,8 @@ public class BubbleSort implements Sortable {
         }
     }
 
+    
+
     public void reset() {
         stepCounter = 1;
     }

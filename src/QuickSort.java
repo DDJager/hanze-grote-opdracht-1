@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class QuickSort implements Sortable {
@@ -7,6 +8,8 @@ public class QuickSort implements Sortable {
     // If the method performs one single step, it will save
     // the current increment in this variable for the next step
     private static int stepCounter = 1;
+
+    private static int[] tempList;
 
     /**
      * QuickSort with a List dataset
@@ -24,19 +27,29 @@ public class QuickSort implements Sortable {
      * @param dataSet The dataset
      */
     public void sort(int[] dataSet) {
+        long start = System.currentTimeMillis();
+
+        // Instantiate tempList as a clone of the dataSet/list
+        tempList = dataSet.clone();
+
+        // Call the quicksort
         quickSort(dataSet, 0, dataSet.length - 1);
+
+        long end = System.currentTimeMillis();
+        System.out.println("Time: " + Long.toString((end - start)) );
     }
 
     public void sortOneStep(int[] dataSet) {
-
+        // sortOneStep is temporarily implementend in quickSort()
     }
 
     public void reset() {
         stepCounter = 1;
+        tempList = null;
     }
 
     private void quickSort(int[] list, int first, int last) {
-        if (last > first) {
+        if (last > first && Arrays.equals(tempList, list)) {
             int pivotIndex = partition(list, first, last);
             quickSort(list, first, pivotIndex - 1);
             quickSort(list, pivotIndex + 1, last);
